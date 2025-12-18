@@ -1,3 +1,4 @@
+const { connectDatabase } = require('./config/datasource');
 const express = require('express');
 const axios = require('axios');
 const sqlite3 = require('sqlite3').verbose();
@@ -109,6 +110,8 @@ db.run(`CREATE TABLE IF NOT EXISTS comments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   content TEXT NOT NULL
 )`);
+
+connectDatabase();
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
