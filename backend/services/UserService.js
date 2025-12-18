@@ -1,11 +1,8 @@
-const User = require('../models/User');
+const { User } = require('../config/datasource');
 
 class UserService {
   static async createUser(name, password) {
-    return await User.create({
-      name,
-      password,
-    });
+    return await User.create({ name, password });
   }
 
   static async getAllUsers() {

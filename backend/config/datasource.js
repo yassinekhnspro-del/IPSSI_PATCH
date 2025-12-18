@@ -12,6 +12,11 @@ const sequelize = new Sequelize(
   }
 );
 
+// Import des modèles
+const UserModel = require('../models/User');
+
+const User = UserModel(sequelize);
+
 const connectDatabase = async () => {
   try {
     await sequelize.authenticate();
@@ -23,4 +28,10 @@ const connectDatabase = async () => {
     console.error('Unable to connect to database:', error.message);
     process.exit(1);
   }
+};
+
+module.exports = {
+  sequelize,
+  connectDatabase,
+  User,
 };
