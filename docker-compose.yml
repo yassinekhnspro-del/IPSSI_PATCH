@@ -21,12 +21,8 @@ services:
     restart: always
     ports:
       - "8000:8000"
-    environment:
-      DB_HOST: mariadb
-      DB_PORT: 3306
-      DB_NAME: app_db
-      DB_USER: app_user
-      DB_PASSWORD: app_password
+    env_file:
+      - .env
     depends_on:
       - mariadb
     networks:
